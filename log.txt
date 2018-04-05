@@ -1,0 +1,40 @@
+Run 4.4.18.1
+Initial run without code modification
+Epoch 20/20
+31/31 [==============================] - 40s - loss: 5.1019 - acc: 0.6835 - val_loss: 4.7140 - val_acc: 0.7075
+
+Run 4.4.18.2
+Run with dropout 0.5->0.2
+No significant difference
+Epoch 20/20
+31/31 [==============================] - 40s - loss: 5.1344 - acc: 0.6815 - val_loss: 4.6787 - val_acc: 0.7097
+
+Run 4.4.18.3
+Run with dropout 0.01
+Epoch 20/20
+31/31 [==============================] - 41s - loss: 4.5820 - acc: 0.7157 - val_loss: 4.7241 - val_acc: 0.7069
+
+Run 4.4.18.4
+Run with learning rate 0.0004 -> 0.004
+Epoch 20/20
+31/31 [==============================] - 56s - loss: 4.8419 - acc: 0.6996 - val_loss: 4.8216 - val_acc: 0.7009
+
+Run 4.4.18.4
+Run with learning rate 0.004 -> 0.04
+20 epochs -> 10 epochs
+
+
+Notes for the day:
+Running sucessfully, yay! Uploaded to Github for seamless running
+Issue: need to fix module saving in order to use trained modules for predicting:
+	-this will need to involve talking to someone who better knows zoo permissions:
+	-whenever I go down paths to install it, eventually each method hits a block
+	where my permissions are not sufficient for installing.
+Run notes: there isn't any change over epochs: it pretty much sits at ~70% training & validation accuracy
+Tinkering with hyperparameters to look for change in epochs:
+1) Dropout isn't influencing accuracy. I ran dropout = 0.5,0.2,0.1,0.01, and there was (a) no significant
+	difference between any of these runs, and also (b) no significant change in accuracy over the 20
+	epochs
+2) Experimenting with learning rate. Preliminary results have not yet yielded any significant effect.
+	I've tried lr = 0.0004 (default), 0.004
+3) Our batch size is 32? Isn't that a little small?
